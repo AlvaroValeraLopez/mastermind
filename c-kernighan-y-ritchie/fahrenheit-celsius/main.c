@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main(){
-    const double conversionRate = (double)5/9;
+    const double conversionRate = 5.0/9.0;
     double celsius, fahrenheit = 250;
 
     celsius = (fahrenheit - 32) * conversionRate;
