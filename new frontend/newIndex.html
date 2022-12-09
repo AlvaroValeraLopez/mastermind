@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <link rel="stylesheet" href="./css/index.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" rel="stylesheet"/>
+        
+        <title>Masterdots game</title>
+    </head>
+
+    <body>
+        <div class="container flexColumnCentered">
+            <header>
+                <img src="./resources/logo-mastermind.png">
+            </header>
+            <main>
+                <div id="errorPanel">
+                    <p id="errorMsg"></p>
+                </div>
+                <form id="form">
+                    <div class="formItem">
+                        <label for="name">Enter your name: </label>
+                        <div id="prettyField">
+                            <input type="text" name="nick" value="@" readonly />
+                            <input type="text" name="nick" id="nick" />
+                        </div>
+                    </div>
+                    <div class="formItem">
+                        <label for="text">Enter your email: </label>
+                        <input type="text" name="email" id="email" />
+                    </div>
+                    <div class="formItem">
+                        <label for="size">Tamaño del juego. </label>
+                        <select name="size" id="size">
+                            <option value="0">-- Por favor, elige un tamaño. --</option>
+                            <option value="1">4x4</option>
+                            <option value="2">5x5</option>
+                            <option value="3">6x6</option>
+                          </select>
+                    </div>
+                    <div class="formItem">
+                        <label>Avatar:</label>
+                        <div id="avatarsLayout">
+                            <img src="./resources/avatar1.png" id="choosenAvatar">
+                            <div id="avaliableAvatars">
+                                <img src="./resources/avatar1.png" class="avatarIcon" draggable="true">
+                                <img src="./resources/avatar2.png" class="avatarIcon" draggable="true">
+                                <img src="./resources/avatar3.png" class="avatarIcon" draggable="true">
+                                <img src="./resources/avatar4.png" class="avatarIcon" draggable="true">
+                                <img src="./resources/avatar5.png" class="avatarIcon" draggable="true">
+                                <img src="./resources/avatar6.png" class="avatarIcon" draggable="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="formItem">
+                        <input type="submit" value="PLAY" id="playBtn" class="ctaBtn"/>
+                    </div>
+                </form>
+            </main>
+        </div>
+        
+        <!-- SCRIPT. -->
+        <script src="./js/validations.js"></script>
+        <script src="./js/userData.js"></script>
+
+    </body>
+  
+</html>
