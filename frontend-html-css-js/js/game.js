@@ -25,7 +25,19 @@ function createDots(columnSize){
 
     document.getElementById('game').innerHTML = items;
 }
+
+function clickedElement(event){
+    let container = event.target.parentElement;
+    event.target.classList.contains('red') ? container.classList.add('red') : container.classList.add('green');
+}
+
+function addItemsEvents(){
+    let items = Array.from(document.getElementsByClassName('item'));
+    items.map( item => item.addEventListener('mousedown', clickedElement));
+}
+
 getUserData();
 if(!validateNickNotNull()) location="./index.html";
 fillFormData();
 loadGame();
+addItemsEvents();
