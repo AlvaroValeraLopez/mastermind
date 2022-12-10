@@ -1,15 +1,8 @@
 /* ELEMENTS */
-body{
-    display: flex;
-    height: 100vh;
-    background-color: #f5f5f5;
-    font-family: 'Poppins',sans-serif;
-}
 label, input, select{
     padding: 10px;
     margin: 5px 0;
     font-size: 18px;
-    font-family: 'Poppins',sans-serif;
 }
 input, select{
     border: 1px solid #ced4da;

@@ -5,7 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         
+        <link rel="stylesheet" href="./css/reset.css" />
         <link rel="stylesheet" href="./css/index.css" />
+        <link rel="stylesheet" href="./css/generalStyles.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap" rel="stylesheet"/>
@@ -22,7 +24,7 @@
                 <div id="errorPanel">
                     <p id="errorMsg"></p>
                 </div>
-                <form id="form">
+                <form action="game.html" id="form">
                     <div class="formItem">
                         <label for="name">Enter your name: </label>
                         <div id="prettyField">
@@ -32,15 +34,15 @@
                     </div>
                     <div class="formItem">
                         <label for="text">Enter your email: </label>
-                        <input type="text" name="email" id="email" />
+                        <input type="text" name="email" id="email" value="prueba@test.com"/>
                     </div>
                     <div class="formItem">
                         <label for="size">Tamaño del juego. </label>
                         <select name="size" id="size">
                             <option value="0">-- Por favor, elige un tamaño. --</option>
-                            <option value="1">4x4</option>
-                            <option value="2">5x5</option>
-                            <option value="3">6x6</option>
+                            <option value="4">4x4</option>
+                            <option value="5">5x5</option>
+                            <option value="6">6x6</option>
                           </select>
                     </div>
                     <div class="formItem">
@@ -58,7 +60,7 @@
                         </div>
                     </div>
                     <div class="formItem">
-                        <input type="submit" value="PLAY" id="playBtn" class="ctaBtn"/>
+                        <input type="submit" value="PLAY" id="playBtn" class="ctaBtn" />
                     </div>
                 </form>
             </main>

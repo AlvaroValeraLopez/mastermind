@@ -10,6 +10,7 @@ function getUserData(){
 }
 
 function validateNickNotNull(){
+
     if(nick == null){
         sessionStorage.setItem('error', "No se ha rellenado el formulario correctamente.");
         return false;

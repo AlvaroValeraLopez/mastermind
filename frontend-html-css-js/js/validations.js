@@ -22,6 +22,7 @@ function validateSize(){
         sessionStorage.setItem('error', "Debes indicar el tamaño del mapa.");
         return false;
     }
+    sessionStorage.setItem('size', sizeSelect.value);
     return true;
 }
 function validateEmail(){
@@ -81,6 +82,7 @@ function imgMovement(event){
 }
 function chooseAvatar(event){
     choosenAvatar.src = imgItem.src;
+    sessionStorage.setItem('avatar', imgItem.src);
 }
 function addEventListenerToAvatars(){
     avatarIcons = Array.from(document.getElementsByClassName('avatarIcon'));
