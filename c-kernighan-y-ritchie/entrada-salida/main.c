@@ -6,10 +6,11 @@ int main(){
 
     newLines = 0;
 
-    while((c = getchar()) != EOF){
-        if(c=='\n')
+    do{
+        c = getchar();
+        if(c == '\n')
             newLines++;
-    }
+    }while(c!=EOF);
 
     printf("%ld", newLines);
 
