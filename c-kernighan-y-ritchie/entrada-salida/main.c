@@ -2,15 +2,16 @@
 
 int main(){
 
-    long charactersNumber;
+    int c, newLines;
 
-    charactersNumber = 0;
+    newLines = 0;
 
-    while(getchar() != EOF)
-        charactersNumber++;
+    while((c = getchar()) != EOF){
+        if(c=='\n')
+            newLines++;
+    }
 
-    /* Esta función tambien cuenta el /n como caracter. */
-    printf("%ld", charactersNumber);
+    printf("%ld", newLines);
 
     return 0;
 
