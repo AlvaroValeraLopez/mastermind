@@ -3,6 +3,7 @@ var size;
 var adyacents = [];
 var choosenDots = [];
 var classMarcada;
+var idInterval;
 
 function fillFormData(){
     document.getElementById('nick').value = sessionStorage.getItem('nick');
@@ -41,8 +42,13 @@ function adyacentDots(dotId){
     if(((dotId+1)%size)>0) adyacents.push(dotId+1);
     
 }
-
-
+function countDown(){
+    let time = parseInt(document.getElementById('clock').value);
+    time -= 1;
+    document.getElementById('clock').value = time;
+    if(time == 0)
+        removeItemsEvents();
+}
 function mousedownEventFunction(event){
     dotChoosen = true;
     selectDot(event);
@@ -100,8 +106,20 @@ function addItemsEvents(){
         item.addEventListener('mouseover', overElementFunction);
     });
     document.addEventListener('mouseup', mouseupEventFunction);
+    idInterval = setInterval(countDown, 1000);
 }
+function removeItemsEvents(){
 
+    let items = Array.from(document.getElementsByClassName('item'));
+
+    items.forEach(item => {
+        item.removeEventListener('mousedown', mousedownEventFunction);
+        item.removeEventListener('mouseover', overElementFunction);
+    });
+
+    document.removeEventListener('mouseup', mouseupEventFunction);
+    clearInterval(idInterval);
+}
 getUserData();
 if(!validateNickNotNull()) location="./index.html";
 fillFormData();
