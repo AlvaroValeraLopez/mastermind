@@ -1,6 +1,9 @@
 var dotChoosen = false;
 var size;
-var overDotId;
+var adyacents = [];
+var choosenDots = [];
+var classMarcada;
+
 function fillFormData(){
     document.getElementById('nick').value = sessionStorage.getItem('nick');
     document.getElementById('avatar').src = sessionStorage.getItem('avatar');
@@ -28,30 +31,66 @@ function createDots(columnSize){
 
     document.getElementById('game').innerHTML = items;
 }
-function adyacentDots(){
-    let adyacents=[];
+function adyacentDots(dotId){
     
-    if((overDotId-size)>=0) adyacents.push(overDotId-size);
-    if((overDotId+size)<(Math.pow(size, 2))) adyacents.push(overDotId+size);
-    if((overDotId%size)>0) adyacents.push(overDotId-1);
-    if(((overDotId+1)%size)>0) adyacents.push(overDotId+1);
+    adyacents = [];
 
-    console.log(adyacents);
+    if((dotId-size)>=0) adyacents.push(dotId-size);
+    if((dotId+size)<(Math.pow(size, 2))) adyacents.push(dotId+size);
+    if((dotId%size)>0) adyacents.push(dotId-1);
+    if(((dotId+1)%size)>0) adyacents.push(dotId+1);
     
 }
+
+
 function mousedownEventFunction(event){
-    let container = event.target.parentElement;
-    event.target.classList.contains('red') ? container.classList.add('red') : container.classList.add('green');
     dotChoosen = true;
+    selectDot(event);
+    adyacentDots(parseInt(event.target.id));
+}
+function selectDot(event){
+    let container = event.target.parentElement;
+    choosenDots.push(parseInt(event.target.id));
+    if (event.target.classList.contains('red')){
+        classMarcada = "red";
+        container.classList.add('red')
+    }else{
+        classMarcada = "green";
+        container.classList.add('green');
+    }
 }
 function overElementFunction(event){
-    overDotId = parseInt(event.target.id);
-    adyacentDots();
-    if(dotChoosen)    mousedownEventFunction(event);
-}
+    
+    let dotId = parseInt(event.target.id);
 
+    if(dotChoosen && adyacents.includes(dotId) && event.target.classList.contains(classMarcada)){
+        selectDot(event);
+        adyacentDots(dotId);
+    }
+    
+}
+function updateScore(points){
+    let score = parseInt(document.getElementById('score').value)
+    score += points;
+    document.getElementById('score').value = score;
+    console.log(score);
+}
 function mouseupEventFunction(event){
     dotChoosen = false;
+    
+    if(choosenDots.length == 1)
+        document.getElementById(choosenDots[0]).parentElement.classList.remove(classMarcada);
+
+    if(choosenDots.length > 1){
+        updateScore(choosenDots.length);
+        choosenDots.forEach( dotId => {
+            document.getElementById(dotId).parentElement.classList.remove(classMarcada);
+            document.getElementById(dotId).classList.remove(classMarcada);
+            document.getElementById(dotId).classList.add(getRandomColor());
+        });
+    }
+
+    choosenDots = [];
 }
 
 function addItemsEvents(){
