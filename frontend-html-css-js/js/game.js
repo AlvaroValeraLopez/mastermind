@@ -45,7 +45,7 @@ function mousedownEventFunction(event){
     dotChoosen = true;
 }
 function overElementFunction(event){
-    overDotId = event.target.id;
+    overDotId = parseInt(event.target.id);
     adyacentDots();
     if(dotChoosen)    mousedownEventFunction(event);
 }
